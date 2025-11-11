@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { useMotionValue } from "framer-motion";
 import { Link } from "react-router";
-import Water from "~/assets/water.mp4";
 export default function Nav() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -22,19 +21,12 @@ export default function Nav() {
 
   return (
     <>
-      <video
-        src={Water}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="w-full h-screen object-cover fixed z-0"
-      ></video>
       <div
         ref={containerRef}
-        className="h-[300vh] relative text-white z-10"
+        className="h-[300vh] relative text-chart-2 z-10 "
       >
-        <div className="fixed left-0 top-0 w-full h-screen pointer-events-none">
+        <div className="fixed left-0 top-0 w-full h-screen pointer-events-none"
+        style={{background:"linear-gradient(to top, #081a14 0%, #081a14 70%, #0d2d23 100%)"}}>
           {navItems.map((item, index) => {
             const itemProgress = useTransform(
               scrollYProgress,
@@ -108,12 +100,11 @@ export default function Nav() {
               >
                 <Link to={item.path} className="no-underline">
                   <motion.div
-                    className="text-white px-6 py-3 font-cedarville text-7xl font-bold cursor-pointer whitespace-nowrap"
+                    className="px-6 py-3 font-cedarville text-7xl font-bold cursor-pointer whitespace-nowrap"
                     whileHover={{
                       scale: 1.1,
                     }}
-                  >
-                    {item.label}
+                  > {item.label}
                   </motion.div>
                 </Link>
               </motion.div>
